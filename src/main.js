@@ -4,25 +4,27 @@ import './style.css';
 // X GetPaid Tool - Main Application
 // ============================================
 
+import { supabase } from './supabaseClient.js';
+
 // ---- Data Store ----
 const store = {
-  revenue: JSON.parse(localStorage.getItem('xgp_revenue') || '[]'),
-  affiliateLinks: JSON.parse(localStorage.getItem('xgp_affiliates') || '[]'),
-  contentQueue: JSON.parse(localStorage.getItem('xgp_content') || '[]'),
-  settings: JSON.parse(localStorage.getItem('xgp_settings') || '{}'),
-  accountInfo: JSON.parse(localStorage.getItem('xgp_account') || '{}'),
-  actionPlan: JSON.parse(localStorage.getItem('xgp_actionplan') || 'null'),
-  goals: JSON.parse(localStorage.getItem('xgp_goals') || 'null'),
+  revenue: [],
+  affiliateLinks: [],
+  contentQueue: [],
+  settings: {},
+  accountInfo: {},
+  actionPlan: null,
+  goals: null,
 };
 
-function saveStore() {
-  localStorage.setItem('xgp_revenue', JSON.stringify(store.revenue));
-  localStorage.setItem('xgp_affiliates', JSON.stringify(store.affiliateLinks));
-  localStorage.setItem('xgp_content', JSON.stringify(store.contentQueue));
-  localStorage.setItem('xgp_settings', JSON.stringify(store.settings));
-  localStorage.setItem('xgp_account', JSON.stringify(store.accountInfo));
-  localStorage.setItem('xgp_actionplan', JSON.stringify(store.actionPlan));
-  localStorage.setItem('xgp_goals', JSON.stringify(store.goals));
+async function saveStore() {
+  // Save to Supabase
+  const { error } = await supabase
+    .from('user_state')
+    .update({ data: store, updated_at: new Date() })
+    .eq('user_id', 'flaneursco');
+
+  if (error) console.error('Error saving store:', error);
 }
 
 // ---- Navigation ----
@@ -1654,7 +1656,21 @@ function drawProjectionChart() {
 }
 
 // ---- Initialize ----
-function init() {
+async function init() {
+  // Fetch data from Supabase
+  const { data, error } = await supabase
+    .from('user_state')
+    .select('data')
+    .eq('user_id', 'flaneursco')
+    .single();
+
+  if (data && data.data && Object.keys(data.data).length > 0) {
+    Object.assign(store, data.data);
+  } else {
+    // If no row exists or data is empty, insert default store
+    await supabase.from('user_state').insert({ user_id: 'flaneursco', data: store });
+  }
+
   updateDate();
   updateDashboardStats();
   drawRevenueChart('week');
@@ -1664,13 +1680,14 @@ function init() {
   renderRevenueTable();
   renderContentQueue();
   renderAffiliateTable();
-  renderStrategies('all');
-  updateGrowthStats();
-  updateBreakdownAmounts();
-  initActionPlan();
 
-  // Load demo data if first visit
-  if (!localStorage.getItem('xgp_initialized')) {
+  if (typeof renderStrategies === 'function') renderStrategies('all');
+  if (typeof updateGrowthStats === 'function') updateGrowthStats();
+  if (typeof initActionPlan === 'function') initActionPlan();
+
+  // Load demo data if store is empty and it's first visit
+  const isDemoLoaded = store.revenue && store.revenue.length > 0;
+  if (!isDemoLoaded && !localStorage.getItem('xgp_initialized')) {
     loadDemoData();
     localStorage.setItem('xgp_initialized', 'true');
   }
