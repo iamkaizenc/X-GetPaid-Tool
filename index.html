@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="X (Twitter) Platformu Kazanç Optimizasyon Dashboard - Tüm gelir kaynaklarını yönetin, içerik planlayın ve kazancınızı maksimize edin." />
+  <title>X GetPaid Tool - Twitter Kazanç Optimizasyon Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </div>
+          <span class="logo-text">GetPaid</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18" />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" rx="1" />
+            <rect x="14" y="3" width="7" height="7" rx="1" />
+            <rect x="3" y="14" width="7" height="7" rx="1" />
+            <rect x="14" y="14" width="7" height="7" rx="1" />
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-page="revenue" id="nav-revenue">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+          </svg>
+          <span>Gelir Takibi</span>
+        </a>
+        <a href="#" class="nav-item" data-page="content" id="nav-content">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+          <span>İçerik Planlayıcı</span>
+        </a>
+        <a href="#" class="nav-item" data-page="affiliate" id="nav-affiliate">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+          </svg>
+          <span>Affiliate Linkler</span>
+        </a>
+        <a href="#" class="nav-item" data-page="growth" id="nav-growth">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+          </svg>
+          <span>Büyüme Metrikleri</span>
+        </a>
+        <a href="#" class="nav-item" data-page="eligibility" id="nav-eligibility">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 11l3 3L22 4" />
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+          </svg>
+          <span>Uygunluk Kontrolü</span>
+        </a>
+        <a href="#" class="nav-item" data-page="strategies" id="nav-strategies">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3" />
+            <line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+          <span>Strateji Merkezi</span>
+        </a>
+        <a href="#" class="nav-item" data-page="action" id="nav-action">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+          </svg>
+          <span>Eylem Planı</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="premium-badge">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          <span>X Premium Aktif</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
+          <div class="search-box" id="searchBox">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input type="text" placeholder="Ara... (gelir, stratejiler, linkler)" id="searchInput" />
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="date-display" id="dateDisplay"></div>
+          <div class="notification-bell" id="notificationBell">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 01-3.46 0" />
+            </svg>
+            <span class="notification-badge">3</span>
+          </div>
+          <div class="user-avatar" id="userAvatar">
+            <div class="avatar-circle">K</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Container -->
+      <div class="page-container">
+        <!-- ==================== DASHBOARD PAGE ==================== -->
+        <section class="page active" id="page-dashboard">
+          <div class="page-header">
+            <h1>Dashboard</h1>
+            <p class="page-subtitle">X platformundaki kazanç performansınızın genel görünümü</p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="stats-grid">
+            <div class="stat-card gradient-blue">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Toplam Kazanç</span>
+                <span class="stat-value" id="totalRevenue">$0</span>
+                <span class="stat-change positive">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  </svg>
+                  +24.5%
+                </span>
+              </div>
+            </div>
+            <div class="stat-card gradient-purple">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                  <path d="M16 3.13a4 4 0 010 7.75" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Takipçiler</span>
+                <span class="stat-value" id="totalFollowers">0</span>
+                <span class="stat-change positive">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  </svg>
+                  +12.3%
+                </span>
+              </div>
+            </div>
+            <div class="stat-card gradient-green">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Gösterimler (90 gün)</span>
+                <span class="stat-value" id="totalImpressions">0</span>
+                <span class="stat-change positive">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  </svg>
+                  +18.7%
+                </span>
+              </div>
+            </div>
+            <div class="stat-card gradient-orange">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Etkileşim Oranı</span>
+                <span class="stat-value" id="engagementRate">0%</span>
+                <span class="stat-change positive">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                  </svg>
+                  +5.2%
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue Chart + Revenue Breakdown -->
+          <div class="dashboard-grid">
+            <div class="card chart-card">
+              <div class="card-header">
+                <h3>Gelir Grafiği</h3>
+                <div class="chart-controls">
+                  <button class="chart-btn active" data-period="week">Hafta</button>
+                  <button class="chart-btn" data-period="month">Ay</button>
+                  <button class="chart-btn" data-period="year">Yıl</button>
+                </div>
+              </div>
+              <div class="chart-container" id="revenueChart">
+                <canvas id="revenueCanvas"></canvas>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3>Gelir Dağılımı</h3>
+              </div>
+              <div class="revenue-breakdown" id="revenueBreakdown">
+                <div class="breakdown-item">
+                  <div class="breakdown-icon" style="background: linear-gradient(135deg, #1DA1F2, #0d8ed6);">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
+                      <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                    </svg>
+                  </div>
+                  <div class="breakdown-info">
+                    <span class="breakdown-name">Reklam Gelir Payı</span>
+                    <span class="breakdown-amount">$0</span>
+                  </div>
+                  <div class="breakdown-bar">
+                    <div class="breakdown-fill"
+                      style="width: 45%; background: linear-gradient(90deg, #1DA1F2, #0d8ed6);"></div>
+                  </div>
+                </div>
+                <div class="breakdown-item">
+                  <div class="breakdown-icon" style="background: linear-gradient(135deg, #794BC4, #5c2d91);">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
+                      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2" />
+                    </svg>
+                  </div>
+                  <div class="breakdown-info">
+                    <span class="breakdown-name">Abonelikler</span>
+                    <span class="breakdown-amount">$0</span>
+                  </div>
+                  <div class="breakdown-bar">
+                    <div class="breakdown-fill"
+                      style="width: 25%; background: linear-gradient(90deg, #794BC4, #5c2d91);"></div>
+                  </div>
+                </div>
+                <div class="breakdown-item">
+                  <div class="breakdown-icon" style="background: linear-gradient(135deg, #17BF63, #0da64e);">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
+                      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                    </svg>
+                  </div>
+                  <div class="breakdown-info">
+                    <span class="breakdown-name">Affiliate Komisyon</span>
+                    <span class="breakdown-amount">$0</span>
+                  </div>
+                  <div class="breakdown-bar">
+                    <div class="breakdown-fill"
+                      style="width: 20%; background: linear-gradient(90deg, #17BF63, #0da64e);"></div>
+                  </div>
+                </div>
+                <div class="breakdown-item">
+                  <div class="breakdown-icon" style="background: linear-gradient(135deg, #F5A623, #c7851a);">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="white">
+                      <circle cx="12" cy="12" r="10" />
+                    </svg>
+                  </div>
+                  <div class="breakdown-info">
+                    <span class="breakdown-name">Bahşişler</span>
+                    <span class="breakdown-amount">$0</span>
+                  </div>
+                  <div class="breakdown-bar">
+                    <div class="breakdown-fill"
+                      style="width: 10%; background: linear-gradient(90deg, #F5A623, #c7851a);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity + Quick Actions -->
+          <div class="dashboard-grid">
+            <div class="card">
+              <div class="card-header">
+                <h3>Son Aktiviteler</h3>
+                <button class="btn-text">Tümünü Gör</button>
+              </div>
+              <div class="activity-list" id="activityList">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <h3>Hızlı İşlemler</h3>
+              </div>
+              <div class="quick-actions">
+                <button class="action-btn" data-action="addRevenue" id="quickAddRevenue">
+                  <div class="action-icon gradient-blue">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2">
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                  </div>
+                  <span>Gelir Ekle</span>
+                </button>
+                <button class="action-btn" data-action="schedulePost" id="quickSchedulePost">
+                  <div class="action-icon gradient-purple">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                  </div>
+                  <span>İçerik Planla</span>
+                </button>
+                <button class="action-btn" data-action="addAffiliate" id="quickAddAffiliate">
+                  <div class="action-icon gradient-green">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2">
+                      <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                    </svg>
+                  </div>
+                  <span>Link Ekle</span>
+                </button>
+                <button class="action-btn" data-action="checkEligibility" id="quickCheckEligibility">
+                  <div class="action-icon gradient-orange">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="white" stroke-width="2">
+                      <path d="M9 11l3 3L22 4" />
+                    </svg>
+                  </div>
+                  <span>Uygunluk</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== REVENUE PAGE ==================== -->
+        <section class="page" id="page-revenue">
+          <div class="page-header">
+            <h1>Gelir Takibi</h1>
+            <p class="page-subtitle">Tüm kazanç kaynaklarınızı detaylı olarak takip edin</p>
+          </div>
+
+          <div class="revenue-controls">
+            <button class="btn-primary" id="addRevenueBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Gelir Ekle
+            </button>
+            <div class="filter-group">
+              <select id="revenueFilter" class="select-input">
+                <option value="all">Tüm Kaynaklar</option>
+                <option value="ad_revenue">Reklam Gelir Payı</option>
+                <option value="subscriptions">Abonelikler</option>
+                <option value="affiliate">Affiliate</option>
+                <option value="tips">Bahşişler</option>
+                <option value="spaces">Ticketed Spaces</option>
+                <option value="sponsored">Sponsorlu İçerik</option>
+                <option value="digital_products">Dijital Ürünler</option>
+              </select>
+              <select id="revenuePeriod" class="select-input">
+                <option value="week">Bu Hafta</option>
+                <option value="month" selected>Bu Ay</option>
+                <option value="quarter">Bu Çeyrek</option>
+                <option value="year">Bu Yıl</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="revenue-table-card card">
+            <table class="data-table" id="revenueTable">
+              <thead>
+                <tr>
+                  <th>Tarih</th>
+                  <th>Kaynak</th>
+                  <th>Açıklama</th>
+                  <th>Tutar</th>
+                  <th>Durum</th>
+                  <th>İşlem</th>
+                </tr>
+              </thead>
+              <tbody id="revenueTableBody">
+                <!-- Filled by JS -->
+              </tbody>
+            </table>
+            <div class="empty-state" id="revenueEmpty">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+              </svg>
+              <h3>Henüz gelir kaydı yok</h3>
+              <p>İlk gelirinizi ekleyerek takibe başlayın</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== CONTENT PLANNER PAGE ==================== -->
+        <section class="page" id="page-content">
+          <div class="page-header">
+            <h1>İçerik Planlayıcı</h1>
+            <p class="page-subtitle">Optimal zamanlama ve içerik stratejisi ile etkileşimi maksimize edin</p>
+          </div>
+
+          <div class="content-controls">
+            <button class="btn-primary" id="addContentBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              İçerik Planla
+            </button>
+          </div>
+
+          <!-- Best Times to Post -->
+          <div class="card">
+            <div class="card-header">
+              <h3>🕐 En İyi Paylaşım Saatleri</h3>
+            </div>
+            <div class="best-times-grid" id="bestTimesGrid">
+              <div class="time-heatmap">
+                <div class="heatmap-header">
+                  <span></span>
+                  <span>00</span><span>02</span><span>04</span><span>06</span><span>08</span><span>10</span><span>12</span><span>14</span><span>16</span><span>18</span><span>20</span><span>22</span>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Pzt</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell low"></div>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Sal</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell low"></div>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Çar</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell low"></div>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Per</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell peak"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell low"></div>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Cum</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Cmt</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                </div>
+                <div class="heatmap-row">
+                  <span class="day-label">Paz</span>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell low"></div>
+                </div>
+              </div>
+              <div class="heatmap-legend">
+                <span>Düşük</span>
+                <div class="legend-cells">
+                  <div class="heatmap-cell low"></div>
+                  <div class="heatmap-cell medium"></div>
+                  <div class="heatmap-cell high"></div>
+                  <div class="heatmap-cell peak"></div>
+                </div>
+                <span>Yüksek</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Queue -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📋 İçerik Kuyruğu</h3>
+            </div>
+            <div class="content-queue" id="contentQueue">
+              <!-- Filled by JS -->
+            </div>
+            <div class="empty-state" id="contentEmpty">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <h3>Planlanmış içerik yok</h3>
+              <p>Yeni içerikler planlayarak başlayın</p>
+            </div>
+          </div>
+
+          <!-- Content Templates -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📝 İçerik Şablonları</h3>
+            </div>
+            <div class="templates-grid" id="templatesGrid">
+              <div class="template-card" data-template="thread">
+                <div class="template-icon">🧵</div>
+                <h4>Thread</h4>
+                <p>Derinlemesine analiz için thread formatı</p>
+                <button class="btn-outline btn-sm">Kullan</button>
+              </div>
+              <div class="template-card" data-template="hot-take">
+                <div class="template-icon">🔥</div>
+                <h4>Hot Take</h4>
+                <p>Tartışma yaratan görüş paylaşımı</p>
+                <button class="btn-outline btn-sm">Kullan</button>
+              </div>
+              <div class="template-card" data-template="tips">
+                <div class="template-icon">💡</div>
+                <h4>X İpuçları</h4>
+                <p>Hızlı ipuçları ve tavsiyeler</p>
+                <button class="btn-outline btn-sm">Kullan</button>
+              </div>
+              <div class="template-card" data-template="affiliate">
+                <div class="template-icon">🔗</div>
+                <h4>Affiliate Post</h4>
+                <p>Ürün tanıtım template'i</p>
+                <button class="btn-outline btn-sm">Kullan</button>
+              </div>
+              <div class="template-card" data-template="poll">
+                <div class="template-icon">📊</div>
+                <h4>Anket</h4>
+                <p>Etkileşim artırma anketi</p>
+                <button class="btn-outline btn-sm">Kullan</button>
+              </div>
+              <div class="template-card" data-template="article">
+                <div class="template-icon">📰</div>
+                <h4>Makale</h4>
+                <p>1000+ kelime uzun makale</p>
+                <button class="btn-outline btn-sm">Kullan</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== AFFILIATE PAGE ==================== -->
+        <section class="page" id="page-affiliate">
+          <div class="page-header">
+            <h1>Affiliate Link Yönetimi</h1>
+            <p class="page-subtitle">Affiliate linklerinizi yönetin ve performanslarını takip edin</p>
+          </div>
+
+          <div class="affiliate-controls">
+            <button class="btn-primary" id="addAffiliateBtn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+              Link Ekle
+            </button>
+          </div>
+
+          <!-- Affiliate Stats -->
+          <div class="stats-grid stats-grid-3">
+            <div class="stat-card gradient-green">
+              <div class="stat-info">
+                <span class="stat-label">Toplam Tıklama</span>
+                <span class="stat-value" id="totalClicks">0</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-blue">
+              <div class="stat-info">
+                <span class="stat-label">Dönüşüm Oranı</span>
+                <span class="stat-value" id="conversionRate">0%</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-purple">
+              <div class="stat-info">
+                <span class="stat-label">Toplam Komisyon</span>
+                <span class="stat-value" id="totalCommission">$0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Affiliate Table -->
+          <div class="card">
+            <table class="data-table" id="affiliateTable">
+              <thead>
+                <tr>
+                  <th>Ürün / Servis</th>
+                  <th>Kategori</th>
+                  <th>Link</th>
+                  <th>Tıklama</th>
+                  <th>Dönüşüm</th>
+                  <th>Komisyon</th>
+                  <th>İşlem</th>
+                </tr>
+              </thead>
+              <tbody id="affiliateTableBody">
+                <!-- Filled by JS -->
+              </tbody>
+            </table>
+            <div class="empty-state" id="affiliateEmpty">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" />
+                <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" />
+              </svg>
+              <h3>Henüz affiliate link yok</h3>
+              <p>İlk affiliate linkinizi ekleyerek takibe başlayın</p>
+            </div>
+          </div>
+
+          <!-- Recommended Affiliate Programs -->
+          <div class="card">
+            <div class="card-header">
+              <h3>🌟 Önerilen Affiliate Programları</h3>
+            </div>
+            <div class="recommended-programs" id="recommendedPrograms">
+              <div class="program-card">
+                <div class="program-logo">🤖</div>
+                <div class="program-info">
+                  <h4>AI Araçları (ChatGPT, Claude, etc.)</h4>
+                  <p>Komisyon: %20-50 recurring</p>
+                  <span class="program-tag hot">🔥 Trend</span>
+                </div>
+              </div>
+              <div class="program-card">
+                <div class="program-logo">☁️</div>
+                <div class="program-info">
+                  <h4>Web Hosting (Hostinger, Cloudways)</h4>
+                  <p>Komisyon: %30-70 per sale</p>
+                  <span class="program-tag popular">⭐ Popüler</span>
+                </div>
+              </div>
+              <div class="program-card">
+                <div class="program-logo">📚</div>
+                <div class="program-info">
+                  <h4>Online Eğitim (Udemy, Coursera)</h4>
+                  <p>Komisyon: %10-45 per sale</p>
+                  <span class="program-tag growing">📈 Büyüyen</span>
+                </div>
+              </div>
+              <div class="program-card">
+                <div class="program-logo">💰</div>
+                <div class="program-info">
+                  <h4>Finans & Trading (eToro, Binance)</h4>
+                  <p>Komisyon: $50-200 per referral</p>
+                  <span class="program-tag high-value">💎 Yüksek Değer</span>
+                </div>
+              </div>
+              <div class="program-card">
+                <div class="program-logo">🔧</div>
+                <div class="program-info">
+                  <h4>SaaS Araçları (Notion, Canva)</h4>
+                  <p>Komisyon: %20-40 recurring</p>
+                  <span class="program-tag recommended">✅ Önerilen</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== GROWTH PAGE ==================== -->
+        <section class="page" id="page-growth">
+          <div class="page-header">
+            <h1>Büyüme Metrikleri</h1>
+            <p class="page-subtitle">Hesabınızın büyüme performansını ve etkileşim metriklerini izleyin</p>
+          </div>
+
+          <!-- Growth Stats -->
+          <div class="stats-grid">
+            <div class="stat-card gradient-blue">
+              <div class="stat-info">
+                <span class="stat-label">Günlük Gösterim</span>
+                <span class="stat-value" id="dailyImpressions">0</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-purple">
+              <div class="stat-info">
+                <span class="stat-label">Yeni Takipçi (Hafta)</span>
+                <span class="stat-value" id="weeklyFollowers">0</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-green">
+              <div class="stat-info">
+                <span class="stat-label">Tweet Performansı</span>
+                <span class="stat-value" id="tweetPerformance">0</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-orange">
+              <div class="stat-info">
+                <span class="stat-label">Profil Ziyareti</span>
+                <span class="stat-value" id="profileVisits">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Growth Chart -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>📊 Büyüme Trendi</h3>
+            </div>
+            <div class="chart-container" id="growthChart">
+              <canvas id="growthCanvas"></canvas>
+            </div>
+          </div>
+
+          <!-- Growth Tips -->
+          <div class="card">
+            <div class="card-header">
+              <h3>🚀 Büyüme Stratejileri</h3>
+            </div>
+            <div class="growth-tips" id="growthTips">
+              <div class="tip-card">
+                <div class="tip-number">1</div>
+                <div class="tip-content">
+                  <h4>Reply-First Stratejisi</h4>
+                  <p>Zamanınızın %80'ini büyük hesaplara değerli yanıtlar yazarak geçirin. Bu şekilde onların
+                    takipçilerine ulaşırsınız.</p>
+                  <div class="tip-impact">Etki: <span class="impact-high">Yüksek</span></div>
+                </div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-number">2</div>
+                <div class="tip-content">
+                  <h4>Günde 2-5 Kaliteli Tweet</h4>
+                  <p>Algoritma kaliteyi ödüllendiriyor. Az ama öz, değerli içerik paylaşın. Thread formatı özellikle
+                    etkili.</p>
+                  <div class="tip-impact">Etki: <span class="impact-high">Yüksek</span></div>
+                </div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-number">3</div>
+                <div class="tip-content">
+                  <h4>Görsel İçerik Kullanın</h4>
+                  <p>Resim, video ve infografik içeren tweetler 2-3x daha fazla etkileşim alır. Kısa videolar algoritma
+                    tarafından ödüllendirilir.</p>
+                  <div class="tip-impact">Etki: <span class="impact-medium">Orta-Yüksek</span></div>
+                </div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-number">4</div>
+                <div class="tip-content">
+                  <h4>Premium Kullanıcılarla Etkileşim</h4>
+                  <p>X Premium kullanıcılarından gelen etkileşimler, gelir paylaşımında daha büyük pay oynuyor. Premium
+                    topluluklarına odaklanın.</p>
+                  <div class="tip-impact">Etki: <span class="impact-high">Yüksek</span></div>
+                </div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-number">5</div>
+                <div class="tip-content">
+                  <h4>1-2 Hashtag Kullanın</h4>
+                  <p>Fazla hashtag spam görünür. Niş ve alakalı 1-2 hashtag kullanın. Event hashtag'leri özellikle
+                    etkilidir.</p>
+                  <div class="tip-impact">Etki: <span class="impact-medium">Orta</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== ELIGIBILITY PAGE ==================== -->
+        <section class="page" id="page-eligibility">
+          <div class="page-header">
+            <h1>Monetizasyon Uygunluk Kontrolü</h1>
+            <p class="page-subtitle">Hangi X monetizasyon programlarına uygun olduğunuzu kontrol edin</p>
+          </div>
+
+          <!-- Account Info Form -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📋 Hesap Bilgilerinizi Girin</h3>
+            </div>
+            <div class="eligibility-form" id="eligibilityForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="followerCount">Takipçi Sayısı</label>
+                  <input type="number" id="followerCount" class="form-input" placeholder="Örn: 2500" />
+                </div>
+                <div class="form-group">
+                  <label for="impressionCount">90 Günlük Gösterim</label>
+                  <input type="number" id="impressionCount" class="form-input" placeholder="Örn: 5000000" />
+                </div>
+                <div class="form-group">
+                  <label for="accountAge">Hesap Yaşı (Ay)</label>
+                  <input type="number" id="accountAge" class="form-input" placeholder="Örn: 12" />
+                </div>
+                <div class="form-group">
+                  <label for="monthlyTweets">Aylık Tweet Sayısı</label>
+                  <input type="number" id="monthlyTweets" class="form-input" placeholder="Örn: 50" />
+                </div>
+              </div>
+              <div class="form-checkboxes">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="hasPremium" />
+                  <span class="checkmark"></span>
+                  X Premium aboneliğim var
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="hasStripe" />
+                  <span class="checkmark"></span>
+                  Stripe hesabım bağlı
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="hasVerifiedEmail" />
+                  <span class="checkmark"></span>
+                  Email adresim doğrulanmış
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" id="has2FA" />
+                  <span class="checkmark"></span>
+                  İki faktörlü doğrulama aktif
+                </label>
+              </div>
+              <button class="btn-primary" id="checkEligibilityBtn">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4" />
+                </svg>
+                Uygunluk Kontrolü Yap
+              </button>
+            </div>
+          </div>
+
+          <!-- Eligibility Results -->
+          <div class="eligibility-results" id="eligibilityResults" style="display: none;">
+            <div class="card">
+              <div class="card-header">
+                <h3>✅ Sonuçlar</h3>
+              </div>
+              <div class="program-eligibility" id="programEligibility">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==================== STRATEGIES PAGE ==================== -->
+        <section class="page" id="page-strategies">
+          <div class="page-header">
+            <h1>Strateji Merkezi</h1>
+            <p class="page-subtitle">X platformunda kazancınızı maksimize etmek için kanıtlanmış stratejiler</p>
+          </div>
+
+          <!-- Strategy Categories -->
+          <div class="strategy-tabs">
+            <button class="strategy-tab active" data-strategy="all">Tümü</button>
+            <button class="strategy-tab" data-strategy="beginner">🟢 Başlangıç</button>
+            <button class="strategy-tab" data-strategy="intermediate">🟡 Orta</button>
+            <button class="strategy-tab" data-strategy="advanced">🔴 İleri</button>
+          </div>
+
+          <div class="strategies-grid" id="strategiesGrid">
+            <!-- Filled by JS -->
+          </div>
+        </section>
+
+        <!-- ==================== ACTION PLAN PAGE ==================== -->
+        <section class="page" id="page-action">
+          <div class="page-header">
+            <h1>🎯 Eylem Planı</h1>
+            <p class="page-subtitle">90 günlük kişisel X monetizasyon yol haritanız — bugünden başlayın!</p>
+          </div>
+
+          <!-- Action Stats -->
+          <div class="stats-grid">
+            <div class="stat-card gradient-green">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 11l3 3L22 4" />
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Tamamlanan</span>
+                <span class="stat-value" id="actionCompleted">0 / 18</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-blue">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Kalan Gün</span>
+                <span class="stat-value" id="actionDaysLeft">90</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-purple">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Gelir Hedefi</span>
+                <span class="stat-value" id="actionRevenueGoal">$0 / $200</span>
+              </div>
+            </div>
+            <div class="stat-card gradient-orange">
+              <div class="stat-icon">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">Günlük Streak</span>
+                <span class="stat-value" id="actionStreak">🔥 0 gün</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Daily Action -->
+          <div class="card daily-action-card" id="dailyActionCard">
+            <div class="card-header">
+              <h3>⚡ Bugün Odaklan</h3>
+              <span class="daily-date" id="dailyDate"></span>
+            </div>
+            <div class="daily-action-content" id="dailyActionContent">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- Goals Tracker -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📊 Kişisel Hedefler</h3>
+              <button class="btn-text" id="editGoalsBtn">Düzenle</button>
+            </div>
+            <div class="goals-tracker" id="goalsTracker">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <!-- 90 Day Checklist -->
+          <div class="action-phases" id="actionPhases">
+            <!-- Phase 1: 0-30 Days -->
+            <div class="card action-phase" data-phase="1">
+              <div class="phase-header phase-green">
+                <div class="phase-info">
+                  <h3>🔥 0-30 Gün: Hemen Başla</h3>
+                  <span class="phase-progress" id="phase1Progress">0/6</span>
+                </div>
+                <div class="phase-bar">
+                  <div class="phase-bar-fill" id="phase1Bar" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="action-checklist" id="phase1Checklist">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <!-- Phase 2: 31-60 Days -->
+            <div class="card action-phase" data-phase="2">
+              <div class="phase-header phase-blue">
+                <div class="phase-info">
+                  <h3>📈 31-60 Gün: Momentum Kur</h3>
+                  <span class="phase-progress" id="phase2Progress">0/6</span>
+                </div>
+                <div class="phase-bar">
+                  <div class="phase-bar-fill" id="phase2Bar" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="action-checklist" id="phase2Checklist">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+
+            <!-- Phase 3: 61-90 Days -->
+            <div class="card action-phase" data-phase="3">
+              <div class="phase-header phase-purple">
+                <div class="phase-info">
+                  <h3>💰 61-90 Gün: Gelir Aktif</h3>
+                  <span class="phase-progress" id="phase3Progress">0/6</span>
+                </div>
+                <div class="phase-bar">
+                  <div class="phase-bar-fill" id="phase3Bar" style="width: 0%"></div>
+                </div>
+              </div>
+              <div class="action-checklist" id="phase3Checklist">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Overall Progress -->
+          <div class="card">
+            <div class="card-header">
+              <h3>🏆 Genel İlerleme</h3>
+            </div>
+            <div class="overall-progress">
+              <div class="progress-circle-container" id="overallProgressCircle">
+                <!-- Filled by JS -->
+              </div>
+              <div class="milestone-list" id="milestoneList">
+                <!-- Filled by JS -->
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Modal</h3>
+        <button class="modal-close" id="modalClose">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Dynamic content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
