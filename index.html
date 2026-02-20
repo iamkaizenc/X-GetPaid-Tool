@@ -135,7 +135,7 @@
             <span class="notification-badge">3</span>
           </div>
           <div class="user-avatar" id="userAvatar">
-            <div class="avatar-circle">K</div>
+            <div class="avatar-circle" title="@flaneursco">F</div>
           </div>
         </div>
       </header>
@@ -362,6 +362,99 @@
                   </div>
                   <span>Uygunluk</span>
                 </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Revenue Projection -->
+          <div class="card">
+            <div class="card-header">
+              <h3>📈 12 Aylık Gelir Projeksiyonu</h3>
+              <span class="card-badge">PPT Slide 9</span>
+            </div>
+            <div class="revenue-projection" id="revenueProjection">
+              <div class="projection-chart">
+                <canvas id="projectionCanvas"></canvas>
+              </div>
+              <div class="projection-summary">
+                <div class="projection-item">
+                  <span class="projection-label">Araç MRR (12. Ay)</span>
+                  <span class="projection-value">$5,200</span>
+                </div>
+                <div class="projection-item">
+                  <span class="projection-label">X Geliri (12. Ay)</span>
+                  <span class="projection-value">$3,500</span>
+                </div>
+                <div class="projection-item projection-total">
+                  <span class="projection-label">Yıllık Toplam</span>
+                  <span class="projection-value">$35,800</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email Capture + Risk Warnings Grid -->
+          <div class="dashboard-grid">
+            <!-- Email Capture -->
+            <div class="card email-capture-card">
+              <div class="card-header">
+                <h3>📧 Email List Kur</h3>
+                <span class="card-badge urgent">Hemen!</span>
+              </div>
+              <div class="email-capture-content">
+                <p>İlk 1.000 email = en değerli varlığın. Landing page'e email yakalama ekle.</p>
+                <div class="email-stats">
+                  <div class="email-stat">
+                    <span class="email-stat-value" id="emailCount">0</span>
+                    <span class="email-stat-label">Toplam Email</span>
+                  </div>
+                  <div class="email-stat">
+                    <span class="email-stat-value" id="emailTarget">1,000</span>
+                    <span class="email-stat-label">Hedef</span>
+                  </div>
+                </div>
+                <div class="email-actions">
+                  <a href="https://mailchimp.com/pricing/free/" target="_blank" class="btn-outline btn-sm">Mailchimp
+                    →</a>
+                  <a href="https://resend.com" target="_blank" class="btn-outline btn-sm">Resend →</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Risk Warnings -->
+            <div class="card">
+              <div class="card-header">
+                <h3>⚠️ Riskler & Uyarılar</h3>
+              </div>
+              <div class="risk-list" id="riskList">
+                <div class="risk-item risk-high">
+                  <span class="risk-level">YÜKSEK</span>
+                  <div class="risk-info">
+                    <h4>X API Değişiklik Riski</h4>
+                    <p>API kısıtlamaları olabilir. Manuel giriş alternatifi bırak.</p>
+                  </div>
+                </div>
+                <div class="risk-item risk-high">
+                  <span class="risk-level">YÜKSEK</span>
+                  <div class="risk-info">
+                    <h4>Monetizasyon Kuralları</h4>
+                    <p>X gelir paylaşım şartları değişebilir. Geliri çeşitlendir.</p>
+                  </div>
+                </div>
+                <div class="risk-item risk-medium">
+                  <span class="risk-level">ORTA</span>
+                  <div class="risk-info">
+                    <h4>KVKK & Disclosure</h4>
+                    <p>Affiliate linklerinde #reklam etiketi zorunlu. Veri politikası ekle.</p>
+                  </div>
+                </div>
+                <div class="risk-item risk-low">
+                  <span class="risk-level">DÜŞÜK</span>
+                  <div class="risk-info">
+                    <h4>Rakip Araçlar</h4>
+                    <p>İlk 6 ayda güçlü kullanıcı tabanı oluştur. Hız avantajı kritik.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -710,46 +803,105 @@
           <div class="card">
             <div class="card-header">
               <h3>🌟 Önerilen Affiliate Programları</h3>
+              <span class="card-badge">PPT Slide 10'dan</span>
             </div>
             <div class="recommended-programs" id="recommendedPrograms">
-              <div class="program-card">
-                <div class="program-logo">🤖</div>
+              <div class="program-card program-hot">
+                <div class="program-logo">🌐</div>
                 <div class="program-info">
-                  <h4>AI Araçları (ChatGPT, Claude, etc.)</h4>
-                  <p>Komisyon: %20-50 recurring</p>
-                  <span class="program-tag hot">🔥 Trend</span>
+                  <h4>Hostinger</h4>
+                  <p>Komisyon: <strong>%60</strong> per sale | Ort: $65/satış</p>
+                  <p class="program-desc">Türkçe destek + yüksek dönüşüm. X'te hosting içerikleriyle pazarla.</p>
+                  <div class="program-meta">
+                    <span class="program-tag hot">🔥 HOT</span>
+                    <a href="https://www.hostinger.com/affiliates" target="_blank" class="program-link">Başvur →</a>
+                  </div>
+                </div>
+              </div>
+              <div class="program-card program-hot">
+                <div class="program-logo">🛡️</div>
+                <div class="program-info">
+                  <h4>NordVPN</h4>
+                  <p>Komisyon: <strong>%40 + recurring</strong> | Ort: $28/ay</p>
+                  <p class="program-desc">Abonelik başına aylık gelir. Gizlilik içerikleriyle uyumlu.</p>
+                  <div class="program-meta">
+                    <span class="program-tag hot">🔥 HOT</span>
+                    <a href="https://nordvpn.com/affiliates/" target="_blank" class="program-link">Başvur →</a>
+                  </div>
                 </div>
               </div>
               <div class="program-card">
-                <div class="program-logo">☁️</div>
+                <div class="program-logo">📋</div>
                 <div class="program-info">
-                  <h4>Web Hosting (Hostinger, Cloudways)</h4>
-                  <p>Komisyon: %30-70 per sale</p>
-                  <span class="program-tag popular">⭐ Popüler</span>
+                  <h4>Notion Affiliate</h4>
+                  <p>Komisyon: <strong>%50</strong> per sale | Ort: $20/satış</p>
+                  <p class="program-desc">Template paylaşımıyla doğal tanıtım. Yüksek dönüşüm oranı.</p>
+                  <div class="program-meta">
+                    <span class="program-tag recommended">✅ Önerilen</span>
+                    <a href="https://www.notion.so/affiliates" target="_blank" class="program-link">Başvur →</a>
+                  </div>
+                </div>
+              </div>
+              <div class="program-card program-hot">
+                <div class="program-logo">🔍</div>
+                <div class="program-info">
+                  <h4>Semrush</h4>
+                  <p>Komisyon: <strong>$200 + recurring</strong> | İlk satış $200</p>
+                  <p class="program-desc">B2B hedefli, yüksek bilet. Profesyonel kitleye uygun SEO aracı.</p>
+                  <div class="program-meta">
+                    <span class="program-tag hot">🔥 HOT</span>
+                    <a href="https://www.semrush.com/lp/affiliate-program/" target="_blank" class="program-link">Başvur
+                      →</a>
+                  </div>
+                </div>
+              </div>
+              <div class="program-card program-hot">
+                <div class="program-logo">📈</div>
+                <div class="program-info">
+                  <h4>eToro</h4>
+                  <p>Komisyon: <strong>$100-200/kullanıcı</strong> | CPA Model</p>
+                  <p class="program-desc">Finans nişinde en yüksek CPA. KYC gerektiriyor.</p>
+                  <div class="program-meta">
+                    <span class="program-tag high-value">💎 Yüksek Değer</span>
+                    <a href="https://www.etoro.com/partners/" target="_blank" class="program-link">Başvur →</a>
+                  </div>
                 </div>
               </div>
               <div class="program-card">
-                <div class="program-logo">📚</div>
+                <div class="program-logo">🎨</div>
                 <div class="program-info">
-                  <h4>Online Eğitim (Udemy, Coursera)</h4>
-                  <p>Komisyon: %10-45 per sale</p>
-                  <span class="program-tag growing">📈 Büyüyen</span>
+                  <h4>Canva Pro</h4>
+                  <p>Komisyon: <strong>%80 (ilk ay)</strong> | Ort: $52/satış</p>
+                  <p class="program-desc">İçerik yaratıcıları için ideal. "Tasarım araçları" içerikleri.</p>
+                  <div class="program-meta">
+                    <span class="program-tag growing">📈 Büyüyen</span>
+                    <a href="https://www.canva.com/affiliates/" target="_blank" class="program-link">Başvur →</a>
+                  </div>
                 </div>
               </div>
               <div class="program-card">
-                <div class="program-logo">💰</div>
+                <div class="program-logo">💼</div>
                 <div class="program-info">
-                  <h4>Finans & Trading (eToro, Binance)</h4>
-                  <p>Komisyon: $50-200 per referral</p>
-                  <span class="program-tag high-value">💎 Yüksek Değer</span>
+                  <h4>Fiverr Business</h4>
+                  <p>Komisyon: <strong>%30 + $150 CPA</strong> | Hybrid Model</p>
+                  <p class="program-desc">"Freelance başlangıç" içerikleriyle pazarla. Yüksek komisyon.</p>
+                  <div class="program-meta">
+                    <span class="program-tag popular">⭐ Popüler</span>
+                    <a href="https://affiliates.fiverr.com/" target="_blank" class="program-link">Başvur →</a>
+                  </div>
                 </div>
               </div>
               <div class="program-card">
-                <div class="program-logo">🔧</div>
+                <div class="program-logo">₿</div>
                 <div class="program-info">
-                  <h4>SaaS Araçları (Notion, Canva)</h4>
-                  <p>Komisyon: %20-40 recurring</p>
-                  <span class="program-tag recommended">✅ Önerilen</span>
+                  <h4>Binance Referral</h4>
+                  <p>Komisyon: <strong>%20 trading fee</strong> | Recurring</p>
+                  <p class="program-desc">Kripto izleyiciler için. Düzenleme riskine dikkat!</p>
+                  <div class="program-meta">
+                    <span class="program-tag growing">📈 Büyüyen</span>
+                    <a href="https://www.binance.com/en/activity/referral" target="_blank" class="program-link">Başvur
+                      →</a>
+                  </div>
                 </div>
               </div>
             </div>

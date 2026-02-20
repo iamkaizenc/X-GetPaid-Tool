@@ -1111,6 +1111,7 @@ window.addEventListener('resize', () => {
   resizeTimer = setTimeout(() => {
     drawRevenueChart(document.querySelector('.chart-btn.active')?.dataset.period || 'week');
     drawGrowthChart();
+    drawProjectionChart();
   }, 250);
 });
 
@@ -1540,12 +1541,125 @@ function renderMilestones() {
   }).join('');
 }
 
+// ---- Revenue Projection Chart ----
+function drawProjectionChart() {
+  const canvas = document.getElementById('projectionCanvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+
+  canvas.width = container.clientWidth * 2;
+  canvas.height = container.clientHeight * 2;
+  ctx.scale(2, 2);
+
+  const width = container.clientWidth;
+  const height = container.clientHeight;
+
+  const months = ['Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara', 'Oca', 'Şub'];
+  // PPT Slide 9 data - Tool MRR + X Revenue
+  const toolMRR = [0, 50, 200, 500, 1000, 1500, 2000, 2800, 3500, 4200, 4800, 5200];
+  const xRevenue = [100, 250, 450, 700, 1000, 1400, 1800, 2200, 2600, 3000, 3200, 3500];
+
+  const padding = { top: 20, right: 20, bottom: 35, left: 45 };
+  const chartWidth = width - padding.left - padding.right;
+  const chartHeight = height - padding.top - padding.bottom;
+
+  const combined = toolMRR.map((v, i) => v + xRevenue[i]);
+  const maxVal = Math.max(...combined) * 1.1;
+  const stepX = chartWidth / (months.length - 1);
+
+  ctx.clearRect(0, 0, width, height);
+
+  // Grid
+  ctx.strokeStyle = 'rgba(30, 42, 66, 0.5)';
+  ctx.lineWidth = 0.5;
+  for (let i = 0; i <= 4; i++) {
+    const y = padding.top + (chartHeight / 4) * i;
+    ctx.beginPath();
+    ctx.moveTo(padding.left, y);
+    ctx.lineTo(width - padding.right, y);
+    ctx.stroke();
+
+    const val = Math.round(maxVal - (maxVal / 4) * i);
+    ctx.fillStyle = '#5a6580';
+    ctx.font = '9px Inter, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText('$' + (val >= 1000 ? (val / 1000).toFixed(1) + 'K' : val), padding.left - 6, y + 3);
+  }
+
+  // X labels
+  months.forEach((m, i) => {
+    const x = padding.left + stepX * i;
+    ctx.fillStyle = '#5a6580';
+    ctx.font = '9px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(m, x, height - 8);
+  });
+
+  function drawArea(data, color, alpha) {
+    const points = data.map((v, i) => ({
+      x: padding.left + stepX * i,
+      y: padding.top + chartHeight - (v / maxVal) * chartHeight,
+    }));
+
+    const gradient = ctx.createLinearGradient(0, padding.top, 0, height - padding.bottom);
+    gradient.addColorStop(0, color.replace('1)', `${alpha})`));
+    gradient.addColorStop(1, color.replace('1)', '0.01)'));
+
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, height - padding.bottom);
+    points.forEach((p, i) => {
+      if (i === 0) ctx.lineTo(p.x, p.y);
+      else {
+        const prev = points[i - 1];
+        const cpx = (prev.x + p.x) / 2;
+        ctx.bezierCurveTo(cpx, prev.y, cpx, p.y, p.x, p.y);
+      }
+    });
+    ctx.lineTo(points[points.length - 1].x, height - padding.bottom);
+    ctx.closePath();
+    ctx.fillStyle = gradient;
+    ctx.fill();
+
+    ctx.beginPath();
+    points.forEach((p, i) => {
+      if (i === 0) ctx.moveTo(p.x, p.y);
+      else {
+        const prev = points[i - 1];
+        const cpx = (prev.x + p.x) / 2;
+        ctx.bezierCurveTo(cpx, prev.y, cpx, p.y, p.x, p.y);
+      }
+    });
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  drawArea(xRevenue, 'rgba(121, 75, 196, 1)', 0.15);
+  drawArea(toolMRR, 'rgba(29, 161, 242, 1)', 0.2);
+
+  // Legend
+  ctx.font = '10px Inter, sans-serif';
+  ctx.fillStyle = 'rgba(29, 161, 242, 1)';
+  ctx.fillRect(padding.left + 5, 8, 10, 10);
+  ctx.fillStyle = '#8b95b0';
+  ctx.textAlign = 'left';
+  ctx.fillText('Araç MRR', padding.left + 20, 17);
+
+  ctx.fillStyle = 'rgba(121, 75, 196, 1)';
+  ctx.fillRect(padding.left + 95, 8, 10, 10);
+  ctx.fillStyle = '#8b95b0';
+  ctx.fillText('X Geliri', padding.left + 110, 17);
+}
+
 // ---- Initialize ----
 function init() {
   updateDate();
   updateDashboardStats();
   drawRevenueChart('week');
   drawGrowthChart();
+  drawProjectionChart();
   renderActivities();
   renderRevenueTable();
   renderContentQueue();
